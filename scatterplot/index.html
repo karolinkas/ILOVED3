@@ -22,8 +22,7 @@
 		var y = d3.scale.linear()
 		      		.range ([height,0]);
 
-		var color = d3.scale.linear()
-								  .range([height, 0]);
+		var color = d3.scale.category10();
 
 		var xAxis = d3.svg.axis().scale(x).orient("bottom");
 
@@ -82,7 +81,7 @@
 											.data(color.domain())
 										.enter().append("g")
 										.attr("class","legend")
-										.attr("transform", function(d,i){ return "translate(0" + i*20 + ")"; });
+										.attr("transform", function(d,i){ return "translate(0," + i*20 + ")"; });
 
 					legend.append("rect")
 						.attr("x",width - 18)
@@ -95,7 +94,7 @@
 						.attr("y", 9)
 						.attr("dy", ".35em")
 						.attr("text-anchor","end")
-						.text(function(){ return d; });
+						.text(function(d){ return d; });
 
 
 
